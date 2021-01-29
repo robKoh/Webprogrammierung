@@ -1,0 +1,13 @@
+{
+  "name": "webprogrammierung_b2",
+  "version": "0.1.0",
+  "description": "Node.js Projekt Gruppe B2",
+  "author": "Niklas Zinngrebe <s_zinngrebe19@stud.hwr-berlin.de",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}
