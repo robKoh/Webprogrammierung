@@ -1,0 +1,19 @@
+name: Validator
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+jobs:
+  w3c-validate:
+    name: Validate html files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Validate
+        uses: Cyb3r-Jak3/html5validator-action@v0.4.4
+        with:
+          root: ./
+          css: true
+          format: text
+          log_level: INFO
