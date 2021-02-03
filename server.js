@@ -1,32 +1,11 @@
-'use strict';
-
 const express = require('express');
-
-// Constants
+const app = express();
 const PORT = 8080;
-const HOST = '0.0.0.0';
 
 // App
-const app = express();
 
-app.use('/', express.static(__dirname + '/source'));
+app.use(express.static('src'));
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/source/Grid_Flex.html');
+app.listen(PORT, () => {
+  console.log(`This app listening at http://localhost:${PORT}`);
 });
-
-app.get('/source/Main.html', (req, res) => {
-  res.sendFile(__dirname + '/source/Main.html');
-});
-
-app.get('/source/Example.html', (req, res) => {
-  res.sendFile(__dirname + '/source/Example.html');
-});
-
-app.get('/source/Style.css', (req, res) => {
-  res.sendFile(__dirname + '/source/Style.css');
-});
-
-
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
