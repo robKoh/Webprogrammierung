@@ -13,19 +13,19 @@ app.use(express.static("src"));
 
 const users = new Map();
 
-/*app.get("/", (req, res) => {
-  var i = 0;
-  id = uuidv4();
-  users.set(i, id);
-  res.cookie("test test", {
+app.get("/", (req, res) => {
+  //var i = 0;
+  //id = uuidv4();
+  //users.set(i, id);
+  /*res.cookie("test test", {
     expire: 3600000 + Date.now(),
     httpOnly: true,
     secure: true
-    
-    //res.sendFile(__dirname + "/static/index.html");
+  */  
+  res.sendFile("/index.html");
     
 });
-});*/
+//});
 
 app.post('/login', (req, res) => {
   const user = req.body;
