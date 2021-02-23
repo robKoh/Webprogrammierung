@@ -9,36 +9,17 @@ const PORT = 8080;
 // App
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use("/", express.static(__dirname + "/src"));
+app.use(express.static("src"));
 
-var id;
 const users = new Map();
 
-app.get('/', function (req, res) {
-  var i;
-  for (i = 0; i < users.size; i++) {
-    if (users[i] != document.cookie) {
-      id = uuidv4();
-      users.set(i, id);
-      res.cookie(id, {expire: 3600000 + Date.now()});
-    }
-  }
-  res.send();
-});
-
-/*app.post('/', (req, res) => {
-  if ()
-
+app.post('/', (req, res) => {
   const user = req.body;
   users[uuidv4()] = user;
-  //res.redirect("/students/");
+  res.redirect("/comment.html/");
   res.statusCode = 201;
   res.send();
-
- // req.session.username = req.body.username;
- // res.redirect("/index.html");
-  //res.send();
-});*/
+});
 
 app.listen(PORT, () => {
   console.log(`This app listening at http://localhost:${PORT}`);
