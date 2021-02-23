@@ -27,13 +27,13 @@ app.get("/", (req, res) => {
 });
 //});
 
-app.post('/login', (req, res) => {
+/*app.post("/login", (req, res) => {
   const user = req.body;
   users[uuidv4()] = user;
  // res.redirect("src/comment.html");
   res.statusCode = 201;
   res.send();
-});
+});*/
 
 app.listen(PORT, () => {
   console.log(`This app listening at http://localhost:${PORT}`);
