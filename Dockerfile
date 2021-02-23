@@ -6,7 +6,7 @@ WORKDIR /app
 RUN git clone https://github.com/robKoh/Webprogrammierung.git .
 
 #RUN npm ci
-RUN node install
+RUN npm install
 
 EXPOSE 8080
 CMD [ "node", "server.js" ]
