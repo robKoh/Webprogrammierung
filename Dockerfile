@@ -3,7 +3,7 @@ FROM node:14
 # Create app directory
 WORKDIR /app
 
-RUN git clone https://github.com/robKoh/Webprogrammierung.git#feature/niklas-matthias-html .
+RUN git clone https://github.com/robKoh/Webprogrammierung.git .
 
 RUN npm ci
 
