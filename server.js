@@ -9,7 +9,7 @@ const PORT = 8080;
 // App
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(express.static("src"));
+app.use("/", express.static("src"));
 
 const users = new Map();
 
