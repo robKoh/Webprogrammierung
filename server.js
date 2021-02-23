@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const bodyParser = require("body-parser");
 const cookieSession = require("cookie-session");
 const cookieParser = require("cookie-parser");
@@ -9,36 +9,32 @@ const PORT = 8080;
 // App
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use("/", express.static(__dirname + "/src"));
+app.use(express.static("src"));
 
 var id;
 const users = new Map();
 
-app.get('/', function (req, res) {
-  var i;
-  for (i = 0; i < users.size; i++) {
-    if (users[i] != document.cookie) {
+app.get("/", (req, res) => {
+  var i = 0;
+  id = uuidv4();
+  users.set(i, id);
+  res.cookie("test test", {
+    expire: 3600000 + Date.now(),
+    httpOnly: true,
+    secure: true
+  });
+
+  // console.log(users[i]);
+  // console.log(document.cookie);
+  /*for (i = 0; i < users.size; i++) {
+    if (users[i] !== document.cookie) {
       id = uuidv4();
       users.set(i, id);
-      res.cookie(id, {expire: 3600000 + Date.now()});
+      res.cookie(id, { expire: 3600000 + Date.now() });
     }
-  }
-  res.send();
+  }*/
+  res.sendFile(__dirname + "/static/index.html");
 });
-
-/*app.post('/', (req, res) => {
-  if ()
-
-  const user = req.body;
-  users[uuidv4()] = user;
-  //res.redirect("/students/");
-  res.statusCode = 201;
-  res.send();
-
- // req.session.username = req.body.username;
- // res.redirect("/index.html");
-  //res.send();
-});*/
 
 app.listen(PORT, () => {
   console.log(`This app listening at http://localhost:${PORT}`);
