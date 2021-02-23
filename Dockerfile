@@ -9,4 +9,4 @@ RUN git clone https://github.com/robKoh/Webprogrammierung.git .
 RUN npm install
 
 EXPOSE 8080
-CMD [ "node", "server.js" ]
+CMD [ "npm", "server.js" ]
