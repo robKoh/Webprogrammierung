@@ -7,7 +7,7 @@ const app = express();
 const PORT = 8080;
 
 // App
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.use("/", express.static(__dirname + "src"));
 
@@ -30,7 +30,7 @@ const users = new Map();
 app.post('/login', (req, res) => {
   const user = req.body;
   users[uuidv4()] = user;
-  res.redirect("/comment.html");
+  res.redirect("/comment");
   res.statusCode = 201;
   res.send();
 });
