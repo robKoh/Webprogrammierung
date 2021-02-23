@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
 app.post('/login', (req, res) => {
   const user = req.body;
   users[uuidv4()] = user;
-  res.redirect("/comment.html");
+  res.redirect("src/comment.html");
   res.statusCode = 201;
   res.send();
 });
