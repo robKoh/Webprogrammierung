@@ -7,7 +7,7 @@ const app = express();
 const PORT = 8080;
 
 // App
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static("src"));
 
