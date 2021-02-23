@@ -11,10 +11,9 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static("src"));
 
-var id;
 const users = new Map();
 
-app.get("/", (req, res) => {
+/*app.get("/", (req, res) => {
   var i = 0;
   id = uuidv4();
   users.set(i, id);
@@ -22,18 +21,18 @@ app.get("/", (req, res) => {
     expire: 3600000 + Date.now(),
     httpOnly: true,
     secure: true
-  });
+    
+    //res.sendFile(__dirname + "/static/index.html");
+    
+});
+});*/
 
-  // console.log(users[i]);
-  // console.log(document.cookie);
-  /*for (i = 0; i < users.size; i++) {
-    if (users[i] !== document.cookie) {
-      id = uuidv4();
-      users.set(i, id);
-      res.cookie(id, { expire: 3600000 + Date.now() });
-    }
-  }*/
-  res.sendFile(__dirname + "/static/index.html");
+app.post('/', (req, res) => {
+  const user = req.body;
+  users[uuidv4()] = user;
+  res.redirect("/comment.html/");
+  res.statusCode = 201;
+  res.send();
 });
 
 app.listen(PORT, () => {
