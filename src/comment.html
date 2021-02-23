@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template</title>
+    <!-- <link rel="stylesheet" href="Style.css"> -->
+</head>
+
+<body>
+    <header> 
+        <h2>Kommentar Bereich</h2>
+        <h4>Hallo, {{username}}</h4>
+    </header>
+
+    <p>
+      Hier siehst du Kommentare anderer User zu bestimmten HTML Begriffen. <br>
+      Du kannst über die <input type="checkbox" disabled> Symbole
+      deine Lieblingsbegriffe favorisieren.
+    </p>
+
+    <form>
+      <div>
+        <p id="paragraph"></p>
+        <input type="checkbox">
+      </div>
+      <div>
+        Kommentar: <input type="text" name="" id="">
+        <input type="submit" value="hinzufügen">
+      </div>
+      <div>
+        <ul id="comment1" />
+      </div>
+    </form>
+
+    <!--
+    <iframe src="form.html" width="100%" id="iframe_0"></iframe>
+    <iframe src="form.html" width="100%" id="iframe_1"></iframe>
+
+    <script>
+      const formtags = ["field", "input"]
+      for (let i in formtags) {
+        let iframeName = "iframe_" + i;
+        let iframe = document.getElementById(iframeName);
+        var innerDoc = (iframe.contentDocument) 
+               ? iframe.contentDocument.body 
+               : iframe.contentWindow.document.body;
+        //console.log(iframe.querySelector("#formBody"))
+        console.log(iframe.contentWindow.document.body)
+        //console.log(innerDoc)
+        //var paragraph = innerDoc.getElementById("paragraph");
+        //console.log(paragraph)
+      }
+    </script> -->
+    
+</html>
