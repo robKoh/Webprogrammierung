@@ -26,7 +26,7 @@ app.post('/login', (req, res) => {
 
 app.get("/logout", (req, res) => {
   req.session = null;
-  res.redirect("/");
+  res.redirect("/index.html");
   res.send();
 });
 
