@@ -14,4 +14,4 @@ fetch("/displayUser")
         var text = document.createTextNode("Unbekannt");
         spanElement.appendChild(text);
     }
-  });
+});
