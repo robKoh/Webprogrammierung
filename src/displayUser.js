@@ -6,10 +6,8 @@ fetch("/displayUser")
     const spanElement = document.getElementById("display_user");
 
     json.forEach((dataItem) => {
-      if (dataItem === req.session.username) {
-          var text = document.createTextNode(dataItem);
-          spanElement.appendChild(text);
-      }
+        var text = document.createTextNode(dataItem);
+        spanElement.appendChild(text);
     });
 
     if (json.length === 0) {
