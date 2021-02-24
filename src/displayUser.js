@@ -6,12 +6,12 @@ fetch("/displayUser")
     const spanElement = document.getElementById("display_user");
 
     json.forEach((dataItem) => {
-        if (json.length === 0) {
-            var text = document.createTextNode("Unbekannt");
-            spanElement.appendChild(text);
-        } else {
-            var text = document.createTextNode(dataItem);
-            spanElement.appendChild(text);
-        }
+        var text = document.createTextNode(dataItem);
+        spanElement.appendChild(text);
     });
+
+    if (json.length === 0) {
+        var text = document.createTextNode("Unbekannt");
+        spanElement.appendChild(text);
+    }
   });
