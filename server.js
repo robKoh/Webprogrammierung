@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 const cookieSession = require("cookie-session");
-//const cookieParser = require("cookie-parser");
 const { v4: uuidv4 } = require("uuid");
 const app = express();
 const PORT = 8080;
@@ -14,7 +13,7 @@ app.use(
   cookieSession({
     name: "session",
     signed: false,
-    expires: new Date(Date.now() + 3600000)
+    expires: new Date(Date.now()).setHours(1)
   })
 );
 
