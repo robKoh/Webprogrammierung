@@ -19,13 +19,13 @@ app.use(
 app.post('/login', (req, res) => {
   req.session.username = req.body.username;
   res.redirect("/comment.html");
- // res.statusCode = 201;
+  res.statusCode = 201;
   res.send();
 });
 
 app.get("/logout", (req, res) => {
   req.session = null;
-  res.redirect("/index.html");
+  res.redirect("/");
   res.send();
 });
 
