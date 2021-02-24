@@ -17,12 +17,8 @@ app.use(
   })
 );
 
-const users = new Map();
-
 app.post('/', (req, res) => {
   req.session.username = req.body.username;
-  const user = req.body.username;
-  users[uuidv4()] = user;
   res.redirect("/comment.html");
   res.statusCode = 201;
   res.send();
