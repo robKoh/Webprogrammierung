@@ -1,6 +1,6 @@
 fetch("/displayUser")
   .then((response) =>
-    response.ok ? response.json() : (window.location.href = "/index.html")
+    response.ok ? response.json() : (window.location.href = "/")
   )
   .then((json) => {
     const spanElement = document.getElementById("display_user");

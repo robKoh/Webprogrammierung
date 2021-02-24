@@ -17,7 +17,7 @@ app.use(
   })
 );
 
-app.post('/', (req, res) => {
+app.post('/login', (req, res) => {
   req.session.username = req.body.username;
   res.redirect("/comment.html");
   res.statusCode = 201;
