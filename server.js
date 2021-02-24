@@ -34,6 +34,15 @@ app.get("/logout", (req, res) => {
   res.send();
 });
 
+app.get("/displayUser", (req, res) => {
+  if (req.session) {
+    res.send([req.session.username]);
+  } else {
+    res.statusCode = 401;
+    res.send();
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`This app listening at http://localhost:${PORT}`);
 });
