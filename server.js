@@ -32,8 +32,6 @@ app.post('/login', (req, res) => {
       res.redirect("/comment.html");
       res.statusCode = 201;
     }
-  } else {
-    alert("Es muss ein Benutzername und ein Passwort eingegeben werden!");
   }
   res.send();
 });
