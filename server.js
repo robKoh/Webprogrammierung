@@ -72,10 +72,10 @@ function findUserinUsers(user) {
 // funktioniert noch nicht!
 app.get("/displayUser", (req, res) => {
   if (req.body.username !== undefined) {
-    res.statusCode(200);
+    res.statusCode = 200;
     res.send([req.body.username]);
   } else {
-    res.statusCode(401);
+    res.statusCode = 401;
     res.send();
   }
 });
