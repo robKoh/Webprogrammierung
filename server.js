@@ -37,7 +37,6 @@ app.post('/login', (req, res) => {
     }
   } else {
     areWrongCredentials = true;
-    res.send(null);
   }
   console.log(users);
 });
