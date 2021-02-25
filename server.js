@@ -38,6 +38,7 @@ app.post('/login', (req, res) => {
     res.redirect("/");
   }
   console.log(users); //Testzwecken drin, um Array Users Content zu überprüfen
+  console.log(users.length);
 });
 
 function findUserinUsers(user) {
