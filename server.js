@@ -38,7 +38,7 @@ app.post('/login', (req, res) => {
       res.send();
     }
   } else {
-    res.redirect("/");
+    res.redirect("/index.html");
   }
   console.log(users); //Testzwecken drin, um Array Users Content zu überprüfen
   console.log(users.length);
