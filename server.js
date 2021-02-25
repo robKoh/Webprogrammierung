@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
 //app.use(bodyParser.json());
 
 const users = [];
-var areWrongCredentials = false;
+var areWrongCredentials = true;
 
 app.post('/login', (req, res) => {
   const user = req.body;
@@ -58,9 +58,10 @@ app.get("/displayUser", (req, res) => {
 
 app.get("/displayAlertCredentials", (req, res) => {
   if (areWrongCredentials) {
-    res.status(200).send();
     areWrongCredentials = false;
+    res.status(200).send();
   } else {
+    areWrongCredentials = false;
     res.status(405).send();
   }
 });
