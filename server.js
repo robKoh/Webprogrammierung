@@ -19,9 +19,12 @@ app.post('/login', (req, res) => {
 
   //Anmelden und Registrieren
   if (user.username !== "" && user.password !== "") {
-    if (findUserinUsers(user) !== undefined) {
+    const userFounded = findUserinUsers(user);
+    console.log(userFounded); // Test
+
+    if (userFounded !== undefined) {
       //Anmelden
-      res.cookie("session", user.id, {maxAge: 300000});
+      res.cookie("session", userFounded.id, {maxAge: 300000});
       res.redirect("/comment.html");
       res.statusCode = 200;
       res.send();
@@ -47,6 +50,7 @@ function findUserinUsers(user) {
   });
 }
 
+// funktioniert noch nicht!
 app.get("/displayUser", (req, res) => {
   if (req.body) {
     res.send([req.body.username]);
