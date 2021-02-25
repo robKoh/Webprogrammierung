@@ -10,7 +10,6 @@ app.use("/index.html", express.static("src"));
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-//app.use(bodyParser.json());
 
 const users = [];
 var tempUser;
@@ -69,6 +68,7 @@ function findUserinUsers(user) {
   }
 }
 
+app.use(bodyParser.json());
 // funktioniert noch nicht!
 app.get("/displayUser", (req, res) => {
   let username = req.body.username;
