@@ -37,8 +37,9 @@ app.post('/login', (req, res) => {
     }
   } else {
     areWrongCredentials = true;
+    res.redirect("/");
   }
-  console.log(users);
+  console.log(users); //Testzwecken drin, um Array Users Content zu überprüfen
 });
 
 function findUserinUsers(user) {
