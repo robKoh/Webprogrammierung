@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const { v4: uuidv4 } = require("uuid");
 const app = express();
@@ -7,9 +6,7 @@ const PORT = 8080;
 
 // App
 app.use("/index.html", express.static("src"));
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(express.urlencoded()); //Parse URL-encoded bodies
 
 const users = [];
 var tempUser;
@@ -68,7 +65,7 @@ function findUserinUsers(user) {
   }
 }
 
-app.use(bodyParser.json());
+app.use(express.json()); //Used to parse JSON bodies
 // funktioniert noch nicht!
 app.get("/displayUser", (req, res) => {
   let username = req.body.username;
