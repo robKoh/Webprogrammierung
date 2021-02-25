@@ -7,7 +7,9 @@ const PORT = 8080;
 
 // App
 app.use(express.static("src"));
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 //app.use(bodyParser.json());
 
 const users = [];
