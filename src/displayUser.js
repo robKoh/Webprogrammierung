@@ -4,12 +4,11 @@ fetch("/displayUser")
   )
   .then((json) => {
     const spanElement = document.getElementById("display_user");
-    let jsonName = JSON.parse(json); 
     
-    if (jsonName.username === "") {
+    if (json.username === "") {
       alert("Benutzer konnte nicht angezeigt werden.");
     } else {
-      var text = document.createTextNode(jsonName.username);
+      var text = document.createTextNode(json.username);
       spanElement.appendChild(text);
     }
   });
