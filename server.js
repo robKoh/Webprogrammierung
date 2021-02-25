@@ -6,7 +6,7 @@ const PORT = 8080;
 
 // App
 app.use("/index.html", express.static("src"));
-//app.use(express.urlencoded()); //Parse URL-encoded bodies
+app.use(express.urlencoded()); //Parse URL-encoded bodies
 
 const users = [];
 var tempUser;
