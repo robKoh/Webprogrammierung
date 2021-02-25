@@ -35,9 +35,7 @@ app.post('/login', (req, res) => {
       res.send();
     }
   }
-  array.forEach(element => {
-    console.log(users[element]);
-  });
+  console.log(users);
 });
 
 app.get("/logout", (req, res) => {
