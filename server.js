@@ -60,6 +60,7 @@ app.get("/displayUser", (req, res) => {
 app.get("/displayAlertCredentials", (req, res) => {
   if (areWrongCredentials) {
     res.status(200).send();
+    areWrongCredentials = false;
   } else {
     res.status(405).send();
   }
