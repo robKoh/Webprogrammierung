@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({
 //app.use(bodyParser.json());
 
 const users = [];
-var areWrongCredentials = true;
 
 app.post('/login', (req, res) => {
   const user = req.body;
@@ -36,7 +35,6 @@ app.post('/login', (req, res) => {
       res.send();
     }
   } else {
-    areWrongCredentials = true;
     res.redirect("/");
   }
   console.log(users); //Testzwecken drin, um Array Users Content zu überprüfen
@@ -54,16 +52,6 @@ app.get("/displayUser", (req, res) => {
   } else {
     res.statusCode = 401;
     res.send();
-  }
-});
-
-app.get("/displayAlertCredentials", (req, res) => {
-  if (areWrongCredentials) {
-    areWrongCredentials = false;
-    res.status(200).send();
-  } else {
-    areWrongCredentials = false;
-    res.status(405).send();
   }
 });
 

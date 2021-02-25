@@ -1,8 +1,10 @@
-function startGetRequest() {
-    fetch("/displayAlertCredentials")
-    .then((response) => 
-        response.ok ? setAlert() : null
-    )
+function validateInputForm() {
+    const inputUsername = document.getElementById("username");
+    const inputPassword = document.getElementById("password");
+
+    if (inputUsername.value === "" || inputPassword.value === "" ) {
+        setAlert();
+    }
 }
 
 function setAlert() {
