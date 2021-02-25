@@ -47,10 +47,6 @@ function findUserinUsers(user) {
   });
 }
 
-app.get("/displayAlertCredentials", (req, res) => {
-  res.status(200).send();
-});
-
 app.get("/displayUser", (req, res) => {
   if (req.body) {
     res.send([req.body.username]);
@@ -60,12 +56,15 @@ app.get("/displayUser", (req, res) => {
   }
 });
 
+app.get("/displayAlertCredentials", (req, res) => {
+  res.status(200).send();
+});
+
 app.get("/logout", (req, res) => {
   req.session = null;
   res.redirect("/");
   res.send();
 });
-
 
 app.listen(PORT, () => {
   console.log(`This app listening at http://localhost:${PORT}`);

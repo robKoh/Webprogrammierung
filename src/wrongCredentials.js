@@ -1,6 +1,6 @@
 fetch("/displayAlertCredentials")
   .then((response) => 
-    response.ok ? setAlert() : (window.location.href = "/login")
+    response.ok ? setAlert() : (window.location.href = "/")
   )
   
 function setAlert() {
