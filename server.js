@@ -34,14 +34,21 @@ app.post('/login', (req, res) => {
       res.statusCode = 201;
       res.send();
     }
+  } else {
+      res.redirect("/displayAlertCredentials")
+      res.send();
   }
   console.log(users);
 });
 
-app.get("/logout", (req, res) => {
-  req.session = null;
-  res.redirect("/");
-  res.send();
+function findUserinUsers(user) {
+  const userFounded = users.find((listenElement) => {
+    return listenElement.id === user.id;
+  });
+}
+
+app.get("/displayAlertCredentials", (req, res) => {
+  res.status(200).send();
 });
 
 app.get("/displayUser", (req, res) => {
@@ -53,11 +60,12 @@ app.get("/displayUser", (req, res) => {
   }
 });
 
-function findUserinUsers(user) {
-  const userFounded = users.find((listenElement) => {
-    return listenElement.id === user.id;
-  });
-}
+app.get("/logout", (req, res) => {
+  req.session = null;
+  res.redirect("/");
+  res.send();
+});
+
 
 app.listen(PORT, () => {
   console.log(`This app listening at http://localhost:${PORT}`);
