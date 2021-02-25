@@ -72,7 +72,7 @@ app.use(express.json()); //Used to parse JSON bodies, newer than bodyParser Libr
 app.get("/displayUser", (req, res) => {
   if (tempUser.username !== undefined) {
     res.statusCode = 200;
-    res.send(tempUser.username);
+    res.json({ username: tempUser.username});
   } else {
     res.statusCode = 401;
     res.send();
