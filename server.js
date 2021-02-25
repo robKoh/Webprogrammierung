@@ -56,7 +56,7 @@ app.use(express.static("src"));
 
 function findUserinUsers(user) {
   const userFounded = users.find((listenElement) => {
-    return listenElement.id === user.id;
+    return listenElement.username === user.username && listenElement.password == user.password;
   });
   console.log(userFounded); // Test
 
