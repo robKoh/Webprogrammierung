@@ -6,8 +6,12 @@ fetch("/displayUser")
     const spanElement = document.getElementById("display_user");
 
     json.forEach((dataItem) => {
+      if (dataItem === null) {
+        alert("Benutzer konnte nicht angezeigt werden.");
+      } else {
         var text = document.createTextNode(dataItem);
         spanElement.appendChild(text);
+      }
     });
 
     if (json.length === 0) {
