@@ -25,6 +25,7 @@ app.post('/login', (req, res) => {
     } else {
       //Registrieren
       user.id = uuidv4();
+      tempUser = user;
       users.push(user);
       res.cookie("session", user.id, {maxAge: 300000});
       res.redirect("/comment.html");
@@ -66,14 +67,12 @@ function findUserinUsers(user) {
   }
 }
 
-app.use(express.json()); //Used to parse JSON bodies
-// funktioniert noch nicht!
+app.use(express.json()); //Used to parse JSON bodies, newer than bodyParser Library
+
 app.get("/displayUser", (req, res) => {
-  let username = req.body.username;
-  console.log(username);
-  if (username !== undefined) {
+  if (tempUser.username !== undefined) {
     res.statusCode = 200;
-    res.send(username);
+    res.send(tempUser.username);
   } else {
     res.statusCode = 401;
     res.send();
