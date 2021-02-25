@@ -21,7 +21,7 @@ app.post('/login', (req, res) => {
   if (user.username !== "" && user.password !== "") {
     if (findUserinUsers(user) !== undefined) {
       //Anmelden
-      res.cookie("session", userFounded.id, {maxAge: 300000});
+      res.cookie("session", user.id, {maxAge: 300000});
       res.redirect("/comment.html");
       res.statusCode = 200;
       res.send();
