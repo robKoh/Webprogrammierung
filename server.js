@@ -24,6 +24,7 @@ app.post('/login', (req, res) => {
       res.cookie("session", user.id, {maxAge: 300000});
       res.redirect("/comment.html");
       res.statusCode = 200;
+      res.send();
     } else {
       //Registrieren
       user.id = uuidv4();
@@ -31,9 +32,9 @@ app.post('/login', (req, res) => {
       res.cookie("session", user.id, {maxAge: 300000});
       res.redirect("/comment.html");
       res.statusCode = 201;
+      res.send();
     }
   }
-  res.send();
 });
 
 app.get("/logout", (req, res) => {
