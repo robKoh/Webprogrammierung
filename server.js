@@ -55,6 +55,8 @@ app.use((req, res, next) => {
   }
 });
 
+app.use(express.static("src"));
+
 function findUserinUsers(user) {
   const userFounded = users.find((listenElement) => {
     return listenElement.id === user.id;
