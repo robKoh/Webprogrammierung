@@ -80,7 +80,7 @@ app.get("/displayUser", (req, res) => {
 });
 
 app.get("/logout", (req, res) => {
-  req.session = null;
+  res.clearCookie('session');
   res.redirect("/");
   res.send();
 });
