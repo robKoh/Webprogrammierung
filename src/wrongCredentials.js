@@ -4,6 +4,7 @@ fetch("/displayAlertCredentials")
   )
   
 function setAlert() {
+    window.location.href = "/";
     alert("Sie müssen einen Benutzername und ein Passwort eingeben!");
 }
 

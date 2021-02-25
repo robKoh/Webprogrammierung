@@ -37,6 +37,7 @@ app.post('/login', (req, res) => {
     }
   } else {
     areWrongCredentials = true;
+    res.redirect("/displayAlertCredentials");
     res.send();
   }
   console.log(users);
