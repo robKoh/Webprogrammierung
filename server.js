@@ -8,7 +8,7 @@ const PORT = 8080;
 // App
 app.use("/index.html", express.static("src"));
 app.use(bodyParser.urlencoded({
-  extended: true
+  extended: false
 }));
 //app.use(bodyParser.json());
 
@@ -21,6 +21,7 @@ app.post('/login', (req, res) => {
   if (user.username !== "" && user.password !== "") {
     const userFounded = findUserinUsers(user);
     console.log(userFounded); // Test
+    console.log(userFounded.id);
 
     if (userFounded !== undefined) {
       //Anmelden
