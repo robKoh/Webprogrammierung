@@ -33,6 +33,7 @@ app.post('/login', (req, res) => {
     }
   } else {
     res.redirect("/index.html");
+    res.send();
   }
   console.log(users); //Testzwecken drin, um Array Users Content zu überprüfen
   console.log(users.length);
@@ -69,9 +70,9 @@ app.use(express.json()); //Used to parse JSON bodies
 // funktioniert noch nicht!
 app.get("/displayUser", (req, res) => {
   let username = req.body.username;
+  console.log(username);
   if (username !== undefined) {
     res.statusCode = 200;
-    console.log(username)
     res.send(username);
   } else {
     res.statusCode = 401;
