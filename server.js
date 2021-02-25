@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({
 //app.use(bodyParser.json());
 
 const users = [];
+var tempUser;
 
 app.post('/login', (req, res) => {
   const user = req.body;
@@ -21,7 +22,7 @@ app.post('/login', (req, res) => {
   if (user.username !== "" && user.password !== "") {
     if (findUserinUsers(user)) {
       //Anmelden
-      res.cookie("session", user.id, {maxAge: 300000});
+      res.cookie("session", tempUser.id, {maxAge: 300000});
       res.redirect("/comment.html");
       res.statusCode = 200;
       res.send();
@@ -61,6 +62,7 @@ function findUserinUsers(user) {
   console.log(userFounded); // Test
 
   if (userFounded !== undefined) {
+    tempUser = userFounded;
     return true;
   } else {
     return false;
