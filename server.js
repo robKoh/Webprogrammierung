@@ -1,25 +1,38 @@
 const express = require('express');
 const bodyParser = require("body-parser");
-const cookieSession = require("cookie-session");
+const cookieParser = require("cookie-parser");
+const { v4: uuidv4 } = require("uuid");
 const app = express();
 const PORT = 8080;
 
 // App
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("src"));
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 
-app.use(
-  cookieSession({
-    name: "session",
-    signed: false,
-    expires: new Date(Date.now()).setHours(1)
-  })
-);
+const users = [];
 
 app.post('/login', (req, res) => {
-  req.session.username = req.body.username;
-  res.redirect("/comment.html");
-  res.statusCode = 201;
+  const user = req.body;
+
+  //Anmelden und Registrieren
+  if (user.username !== undefined && user.password !== undefined) {
+    if (findUserinUsers(user) !== undefined) {
+      //Anmelden
+      res.cookie("session", user.id, {maxAge: 300000});
+      res.redirect("/comment.html");
+      res.statusCode = 200;
+    } else {
+      //Registrieren
+      user.id = uuidv4();
+      users.push(user);
+      res.cookie("session", user.id, {maxAge: 300000});
+      res.redirect("/comment.html");
+      res.statusCode = 201;
+    }
+  } else {
+    alert("Es muss ein Benutzername und ein Passwort eingegeben werden!");
+  }
   res.send();
 });
 
@@ -30,13 +43,19 @@ app.get("/logout", (req, res) => {
 });
 
 app.get("/displayUser", (req, res) => {
-  if (req.session) {
-    res.send([req.session.username]);
+  if (req.body) {
+    res.send([req.body.username]);
   } else {
     res.statusCode = 401;
     res.send();
   }
 });
+
+function findUserinUsers(user) {
+  const userFounded = users.find((listenElement) => {
+    return listenElement.id === user.id;
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`This app listening at http://localhost:${PORT}`);
