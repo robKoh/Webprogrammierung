@@ -19,11 +19,7 @@ app.post('/login', (req, res) => {
 
   //Anmelden und Registrieren
   if (user.username !== "" && user.password !== "") {
-    const userFounded = findUserinUsers(user);
-    console.log(userFounded); // Test
-    console.log(userFounded.id);
-
-    if (userFounded !== undefined) {
+    if (findUserinUsers(user) !== undefined) {
       //Anmelden
       res.cookie("session", userFounded.id, {maxAge: 300000});
       res.redirect("/comment.html");
@@ -62,6 +58,7 @@ function findUserinUsers(user) {
   const userFounded = users.find((listenElement) => {
     return listenElement.id === user.id;
   });
+  return userFounded;
 }
 
 // funktioniert noch nicht!
