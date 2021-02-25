@@ -35,6 +35,7 @@ app.post('/login', (req, res) => {
       res.send();
     }
   }
+  console.log(users);
 });
 
 app.get("/logout", (req, res) => {
