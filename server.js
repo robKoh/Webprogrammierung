@@ -71,12 +71,7 @@ function findUserinUsers(user) {
 
 // funktioniert noch nicht!
 app.get("/displayUser", (req, res) => {
-  if (req.body) {
-    res.send([req.body.username]);
-  } else {
-    res.statusCode = 401;
-    res.send();
-  }
+  res.send([req.body.tempUser.username]);
 });
 
 app.get("/logout", (req, res) => {
