@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({
 //app.use(bodyParser.json());
 
 const users = [];
+var areWrongCredentials = false;
 
 app.post('/login', (req, res) => {
   const user = req.body;
@@ -35,8 +36,9 @@ app.post('/login', (req, res) => {
       res.send();
     }
   } else {
-      res.redirect("/displayAlertCredentials")
-      res.send();
+    areWrongCredentials = true;
+    res.redirect("/displayAlertCredentials");
+    res.send();
   }
   console.log(users);
 });
@@ -57,7 +59,11 @@ app.get("/displayUser", (req, res) => {
 });
 
 app.get("/displayAlertCredentials", (req, res) => {
-  res.status(200).send();
+  if (areWrongCredentials) {
+    res.status(200).send();
+  } else {
+    res.status(405).send();
+  }
 });
 
 app.get("/logout", (req, res) => {
