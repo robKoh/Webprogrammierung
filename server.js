@@ -6,7 +6,7 @@ const app = express();
 const PORT = 8080;
 
 // App
-app.use(express.static("src"));
+app.use("/index.html", express.static("src"));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -25,7 +25,7 @@ app.post('/login', (req, res) => {
     if (userFounded !== undefined) {
       //Anmelden
       res.cookie("session", userFounded.id, {maxAge: 300000});
-      res.redirect("/comment.html");
+      //res.redirect("/comment.html");
       res.statusCode = 200;
       res.send();
     } else {
@@ -33,7 +33,7 @@ app.post('/login', (req, res) => {
       user.id = uuidv4();
       users.push(user);
       res.cookie("session", user.id, {maxAge: 300000});
-      res.redirect("/comment.html");
+   //   res.redirect("/comment.html");
       res.statusCode = 201;
       res.send();
     }
@@ -50,12 +50,12 @@ app.use((req, res, next) => {
   if (req.cookies.session !== undefined) {
     next();
   } else {
-    res.redirect("/");
+    res.redirect("/index.html");
     res.send();
   }
 });
 
-app.use(express.static("src"));
+app.use("/comment.html", express.static("src"));
 
 function findUserinUsers(user) {
   const userFounded = users.find((listenElement) => {
