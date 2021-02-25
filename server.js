@@ -58,7 +58,8 @@ function findUserinUsers(user) {
   const userFounded = users.find((listenElement) => {
     return listenElement.id === user.id;
   });
-  
+  console.log(userFounded); // Test
+
   if (userFounded !== undefined) {
     return true;
   } else {
