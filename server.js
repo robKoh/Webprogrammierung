@@ -44,6 +44,17 @@ app.post('/login', (req, res) => {
   console.log(users.length);
 });
 
+app.use(cookieParser());
+
+app.use((req, res, next) => {
+  if (req.cookies.session !== undefined) {
+    next();
+  } else {
+    res.redirect("/");
+    res.send();
+  }
+});
+
 function findUserinUsers(user) {
   const userFounded = users.find((listenElement) => {
     return listenElement.id === user.id;
