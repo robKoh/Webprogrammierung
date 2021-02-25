@@ -18,7 +18,7 @@ app.post('/login', (req, res) => {
   const user = req.body;
 
   //Anmelden und Registrieren
-  if (user.username !== undefined && user.password !== undefined) {
+  if (user.username !== "" && user.password !== "") {
     if (findUserinUsers(user) !== undefined) {
       //Anmelden
       res.cookie("session", user.id, {maxAge: 300000});
