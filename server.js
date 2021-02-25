@@ -55,7 +55,7 @@ app.use((req, res, next) => {
   }
 });
 
-app.use("/comment.html", express.static("src"));
+app.use(express.static("src"));
 
 function findUserinUsers(user) {
   const userFounded = users.find((listenElement) => {
