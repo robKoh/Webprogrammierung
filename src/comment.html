@@ -21,39 +21,40 @@
       deine Lieblingsbegriffe favorisieren.
     </p>
 
-    <form>
-      <div>
-        <p id="paragraph"></p>
-        <input type="checkbox"/>
-      </div>
-      <div>
-        Kommentar: <input type="text" name="Text" id="Text"/>
-        <input type="submit" value="hinzufügen"/>
-      </div>
-      <div>
-        <ul id="comment1">
-        </ul>
-      </div>
-    </form>
+    <div>
+      <p>HTML </p>
+      <form action="/checkbox" method="POST">
+        <input type="hidden" name="checkbox[]"  value="00"/>
+        <input type="checkbox" name="checkbox[]" id="checkbox0" value="01" onChange="this.form.submit()"/>
+      </form>
+    </div>
+    <div>
+      <form action="/comment" method="POST">
+         Kommentar: <input type="text" name="commentfield0" id="Text0" onfocus="this.value=''"/>
+        <input type="submit" value="hinzufügen" onclick="addToCommentSection('comment0', document.getElementById('Text0').value)"/>
+      </form>
+    </div>
+    <div>
+      <ul id="comment0">
+      </ul>
+    </div>
+    <div>
+      <p>Javascript </p>
+      <form action="/checkbox" method="POST">
+        <input type="hidden" name="checkbox[]" value="10"/>
+        <input type="checkbox" name="checkbox[]]" id="checkbox1" value="11" onChange="this.form.submit()"/>
+      </form>
+    </div>
+    <div>
+      <form action="/comment" method="POST">
+         Kommentar: <input type="text" name="commentfield1" id="Text1" onfocus="this.value=''"/>
+        <input type="submit" value="hinzufügen" onclick="addToCommentSection('comment1', document.getElementById('Text1').value)"/>
+      </form>
+    </div>
+    <div>
+      <ul id="comment1">
+      </ul>
+    </div>
     <script src="displayUser.js"></script>
-    <!--
-    <iframe src="form.html" width="100%" id="iframe_0"></iframe>
-    <iframe src="form.html" width="100%" id="iframe_1"></iframe>
-
-    <script>
-      const formtags = ["field", "input"]
-      for (let i in formtags) {
-        let iframeName = "iframe_" + i;
-        let iframe = document.getElementById(iframeName);
-        var innerDoc = (iframe.contentDocument) 
-               ? iframe.contentDocument.body 
-               : iframe.contentWindow.document.body;
-        //console.log(iframe.querySelector("#formBody"))
-        console.log(iframe.contentWindow.document.body)
-        //console.log(innerDoc)
-        //var paragraph = innerDoc.getElementById("paragraph");
-        //console.log(paragraph)
-      }
-    </script> -->
 </body>   
 </html>

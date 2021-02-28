@@ -5,10 +5,14 @@ const app = express();
 const PORT = 8080;
 
 // App
-app.use("/index.html", express.static("src"));
+//app.use("/index.html", express.static("src"));
 app.use(express.urlencoded()); //Parse URL-encoded bodies
+app.use(cookieParser());
+app.use(express.static("src"));
+app.use(express.json()); //Used to parse JSON bodies, newer than bodyParser Library
 
 const users = [];
+const commentSection = [[],[]]
 var tempUser;
 
 app.post('/login', (req, res) => {
@@ -25,6 +29,7 @@ app.post('/login', (req, res) => {
     } else {
       //Registrieren
       user.id = uuidv4();
+      user.checkbox = [false, false] 
       tempUser = user;
       users.push(user);
       res.cookie("session", user.id, {maxAge: 300000});
@@ -36,11 +41,30 @@ app.post('/login', (req, res) => {
     res.redirect("/index.html");
     res.send();
   }
-  console.log(users); //Testzwecken drin, um Array Users Content zu überprüfen
-  console.log(users.length);
+  //console.log(users); //Testzwecken drin, um Array Users Content zu überprüfen
+  //console.log(users.length);
 });
 
-app.use(cookieParser());
+app.post('/checkbox', (req, res) => {
+  const checkbox = req.body;
+
+  if (checkbox.checkbox[1] !== undefined) {
+    tempUser.checkbox[parseInt(checkbox.checkbox[0].charAt(0))] = true
+  } else {
+    tempUser.checkbox[parseInt(checkbox.checkbox[0].charAt(0))] = false
+  }
+});
+
+
+app.post('/comment', (req, res) => {
+  const form_field = req.body;
+  if (form_field.hasOwnProperty("commentfield0")) {
+    commentSection[0].push(form_field.commentfield0)
+  }
+  else {
+    commentSection[1].push(form_field.commentfield1)
+  }
+});
 
 app.use((req, res, next) => {
   if (req.cookies.session !== undefined) {
@@ -51,13 +75,11 @@ app.use((req, res, next) => {
   }
 });
 
-app.use(express.static("src"));
-
 function findUserinUsers(user) {
   const userFounded = users.find((listenElement) => {
-    return listenElement.username === user.username && listenElement.password == user.password;
+    return listenElement.username === user.username && listenElement.password === user.password;
   });
-  console.log(userFounded); // Test
+  //console.log(userFounded); // Test
 
   if (userFounded !== undefined) {
     tempUser = userFounded;
@@ -67,16 +89,15 @@ function findUserinUsers(user) {
   }
 }
 
-app.use(express.json()); //Used to parse JSON bodies, newer than bodyParser Library
-
 app.get("/displayUser", (req, res) => {
   if (tempUser.username !== undefined) {
     res.statusCode = 200;
-    res.json({ username: tempUser.username});
+    res.json({ tempUser, commentSection});
   } else {
     res.statusCode = 401;
     res.send();
   }
+  //console.log(tempUser); //Testzwecken drin, um Array Users Content zu überprüfen
 });
 
 app.get("/logout", (req, res) => {
