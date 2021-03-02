@@ -77,13 +77,13 @@
       <button id="buttonClose" onclick="document.getElementById('show-dialog').close()">close</button>
     </dialog>
   </header>
-    <form class="grid-container">
+    <div class="grid-container">
         <div class="flex-container">
-          <form action="/html" method="POST" class="flex-item"><input value="HTML" type="button" onclick="displayHtml()"></form>
-          <form action="/css" method="POST" class="flex-item"><input value="CSS" type="button" onclick="displayHtml()"></form>
-          <form action="/javascript" method="POST" class="flex-item"><input value="Javascript" type="button" onclick="displayHtml()"></form>
-          <form action="/kommentar" method="POST" class="flex-item"><input value="Kommentar" type="button" onclick="displayHtml()"></form>
-          <form class="flex-item"><input value="N/A" type="button" onclick="displayHtml()" disabled></form>
+          <form action="/html" method="POST" class="flex-item"><button>HTML</button></form>
+          <form action="/css" method="POST" class="flex-item"><button>CSS</button></form>
+          <form action="/javascript" method="POST" class="flex-item"><button>Javascript</button></form>
+          <form action="/comment" method="POST" class="flex-item"><button>Kommentar</button></form>
+          <form class="flex-item"><button disabled>N/A</button></form>
         </div>
         <div class="edit-container">
             <textarea disabled placeholder="Type here"></textarea>
@@ -93,16 +93,7 @@
             <textarea disabled placeholder="Type here"></textarea>
             <textarea disabled placeholder="Type here"></textarea>
         </div>
-    </form>
-
-    <script>
-        function displayHtml() {
-            location.href = "..\\template.html"
-        }
-        function displayCss() {
-            location.href = "..\\style.css"
-        }
-    </script>
+      </div>
 </body>
 
 </html>

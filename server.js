@@ -1,7 +1,7 @@
 const express = require('express');
 const cookieParser = require("cookie-parser");
 const { v4: uuidv4 } = require("uuid");
-//const datastorage = require("./datastorage");
+const datastorage = require("./datastorage");
 const app = express();
 const PORT = 8080;
 
@@ -14,15 +14,15 @@ app.use(express.json()); //Used to parse JSON bodies, newer than bodyParser Libr
 
 const ENUM = { comment: 0, javas: 1}
 
-const users = [];
-const commentSection = [[],[]]
-var tempUser;
+//const users = [];
+//const commentSection = [[],[]]
+//var tempUser;
 
 function fooRoute(req, res, next) {
   const newUrl = req.url;
 
   if (newUrl === '/login') {
-    if (tempUser.visitCounter !== undefined) {
+    if (datastorage.tempUser.visitCounter !== undefined) {
       tempUser.visitCounter[ENUM.comment]++;
     } 
     res.send()
