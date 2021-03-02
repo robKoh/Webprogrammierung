@@ -3,11 +3,6 @@ function validateInputForm() {
     const inputPassword = document.getElementById("password");
 
     if (inputUsername.value === "" || inputPassword.value === "" ) {
-        setAlert();
+        alert("Sie müssen einen Benutzername und ein Passwort eingeben!");
     }
 }
-
-function setAlert() {
-    alert("Sie müssen einen Benutzername und ein Passwort eingeben!");
-}
-
