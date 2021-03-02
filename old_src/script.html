@@ -1,47 +1,45 @@
 <!DOCTYPE html>
 <html lang="de">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="ScriptLog.js"></script>
     <title>Übung Javascript</title>
-</head>
+  </head>
 
-<body>
-    <h1 style="color: tomato;">Übung Javascript</h1>
-    <label>Logge "Info: Hallo Welt": </label><input type="submit" id="button" onclick="logItem('Hallo Welt')"
-        value="submit">
-    <br><label>Ändere Text: </label><input type="submit" id="textButton" onclick="submitTextChange()" value="submit">
+  <body>
+    <h1 style="color: tomato">Übung Javascript</h1>
+    <div>
+      <label>Logge "Info: Hallo Welt": </label><input type="submit" id="button" onclick="logItem('Hallo Welt')" value="submit" /><br />
+      <label>Ändere Text: </label><input type="submit" id="textButton" onclick="submitTextChange()" value="submit" />
+    </div>
 
     <span id="textAlt">Dies ist ein Text.</span>
 
     <div id="form_Input">
-        <br>
-        <p style="color: chocolate;">Hier kann ein Listenelement dynamisch hinzugefügt und gelöscht werden:</p>
-        <input id="begriffe" type="text" size="30">
+      <br />
+      <p style="color: chocolate">Hier kann ein Listenelement dynamisch hinzugefügt und gelöscht werden:</p>
+      <input id="begriffe" type="text" size="30" />
 
-        <input id="adde" type="button" value="hinzufügen" onclick="neuerBegriff()">
-        <input id="delete" type="button" value="löschen" onclick="deleteBegriff()">
+      <input id="adde" type="button" value="hinzufügen" onclick="neuerBegriff()" />
+      <input id="delete" type="button" value="löschen" onclick="deleteBegriff()" />
     </div>
     <div id="liste"></div>
 
     <script>
-        logItem("Hallo Welt");
+      logItem("Hallo Welt");
 
-        var request = new XMLHttpRequest();
-        request.open("GET", "https://0d206.sse.codesandbox.io/data", true);
-        
-        request.addEventListener('load', function (event) {
-            if (request.status >= 200 && request.status < 300) {
-                console.log(request.responseText);
-            } else {
-                console.warn(request.statusText, request.responseText);
-            }
-        });
-        request.send();
+      var request = new XMLHttpRequest();
+      request.open("GET", "https://0d206.sse.codesandbox.io/data", true);
 
+      request.addEventListener("load", function (event) {
+        if (request.status >= 200 && request.status < 300) {
+          console.log(request.responseText);
+        } else {
+          console.warn(request.statusText, request.responseText);
+        }
+      });
+      request.send();
     </script>
-</body>
-
+  </body>
 </html>

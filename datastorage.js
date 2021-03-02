@@ -1,3 +1,3 @@
 const users = [];
-const commentSection = [[],[]]
+const commentSection = [[], []];
 var tempUser;

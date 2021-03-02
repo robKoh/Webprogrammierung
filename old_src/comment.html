@@ -1,62 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Template</title>
     <!-- <link rel="stylesheet" href="Style.css"> -->
-</head>
+  </head>
 
-<body>
-    <header> 
-        <h2>Kommentar - Bereich</h2>
-        <h4 style="font-size: larger;">Hallo, <span id="display_user" style="font-size: larger; color:darkgoldenrod;"></span></h4>
+  <body>
+    <header>
+      <h2>Kommentar - Bereich</h2>
+      <h4 style="font-size: larger">Hallo, <span id="display_user" style="font-size: larger; color: darkgoldenrod"></span></h4>
     </header>
 
-    <input type="button" value="logout" onclick="window.location.href = '/logout'"/>
+    <input type="button" value="logout" onclick="window.location.href = '/logout'" />
 
     <p>
-      Hier siehst du Kommentare anderer User zu bestimmten HTML Begriffen. <br>
-      Du kannst über die <input type="checkbox" disabled> Symbole
-      deine Lieblingsbegriffe favorisieren.
+      Hier siehst du Kommentare anderer User zu bestimmten HTML Begriffen. <br />
+      Du kannst über die <input type="checkbox" disabled /> Symbole deine Lieblingsbegriffe favorisieren.
     </p>
 
     <div>
-      <p>HTML </p>
+      <p>HTML</p>
       <form action="/checkbox" method="POST">
-        <input type="hidden" name="checkbox[]"  value="00"/>
-        <input type="checkbox" name="checkbox[]" id="checkbox0" value="01" onchange="this.form.submit()"/>
+        <input type="hidden" name="checkbox[]" value="00" />
+        <input type="checkbox" name="checkbox[]" id="checkbox0" value="01" onchange="this.form.submit()" />
       </form>
     </div>
     <div>
       <form action="/comment" method="POST">
-         Kommentar: <input type="text" name="commentfield0" id="Text0" onfocus="this.value=''"/>
-        <input type="submit" value="hinzufügen" onclick="addToCommentSection('comment0', document.getElementById('Text0').value)"/>
+        Kommentar: <input type="text" name="commentfield0" id="Text0" onfocus="this.value=''" />
+        <input type="submit" value="hinzufügen" onclick="addToCommentSection('comment0', document.getElementById('Text0').value)" />
       </form>
     </div>
     <div>
-      <ul id="comment0">
-      </ul>
+      <ul id="comment0"></ul>
     </div>
     <div>
-      <p>Javascript </p>
+      <p>Javascript</p>
       <form action="/checkbox" method="POST">
-        <input type="hidden" name="checkbox[]" value="10"/>
-        <input type="checkbox" name="checkbox[]]" id="checkbox1" value="11" onchange="this.form.submit()"/>
+        <input type="hidden" name="checkbox[]" value="10" />
+        <input type="checkbox" name="checkbox[]]" id="checkbox1" value="11" onchange="this.form.submit()" />
       </form>
     </div>
     <div>
       <form action="/comment" method="POST">
-         Kommentar: <input type="text" name="commentfield1" id="Text1" onfocus="this.value=''"/>
-        <input type="submit" value="hinzufügen" onclick="addToCommentSection('comment1', document.getElementById('Text1').value)"/>
+        Kommentar: <input type="text" name="commentfield1" id="Text1" onfocus="this.value=''" />
+        <input type="submit" value="hinzufügen" onclick="addToCommentSection('comment1', document.getElementById('Text1').value)" />
       </form>
     </div>
     <div>
-      <ul id="comment1">
-      </ul>
+      <ul id="comment1"></ul>
     </div>
     <script src="displayUser.js"></script>
-</body>   
+  </body>
 </html>

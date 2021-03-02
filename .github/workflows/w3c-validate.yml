@@ -1,7 +1,7 @@
 name: Validator
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
 jobs:
   w3c-validate:

@@ -1,7 +1,5 @@
 fetch("/displayUser")
-  .then((response) =>
-    response.ok ? response.json() : (window.location.href = "/")
-  )
+  .then((response) => (response.ok ? response.json() : (window.location.href = "/")))
   .then((json) => {
     const spanElement = document.getElementById("display_user");
     if (json.tempUser.username === "") {
@@ -15,14 +13,13 @@ fetch("/displayUser")
           let checkbox = document.getElementById("checkbox" + element);
           checkbox.checked = true;
         }
-      };
-      
+      }
+
       for (var element = 0; element <= json.commentSection.length; ++element) {
         const olElement = document.getElementById("comment" + element);
-        
+
         if (Array.isArray(json.commentSection[element])) {
-          
-          json.commentSection[element].forEach( elem => {
+          json.commentSection[element].forEach((elem) => {
             let liElement = document.createElement("li");
             liElement.innerText = elem;
             olElement.appendChild(liElement);

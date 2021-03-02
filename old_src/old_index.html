@@ -1,95 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Template</title>
     <!-- <link rel="stylesheet" href="Style.css"> -->
     <style>
-        body {
-            height: 100%;
-            border: 1px solid black;
-        }
+      body {
+        height: 100%;
+        border: 1px solid black;
+      }
 
-        .grid-container {
-            display: grid;
-            grid-template-columns: auto;
-            background-color: #2196F3;
-            padding: 10px;
-        }
+      .grid-container {
+        display: grid;
+        grid-template-columns: auto;
+        background-color: #2196f3;
+        padding: 10px;
+      }
 
-        .flex-container {
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: center;
-            background-color: #2196F3;
-            padding-bottom: 10px;
-            border-bottom: 1px solid black;
-        }
+      .flex-container {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        background-color: #2196f3;
+        padding-bottom: 10px;
+        border-bottom: 1px solid black;
+      }
 
-        .flex-item {
-            font-size: 30px;
-            padding: 0px 5px 0px 5px;
-            text-align: center;
-        }
+      .flex-item {
+        font-size: 30px;
+        padding: 0px 5px 0px 5px;
+        text-align: center;
+      }
 
-        .edit-container {
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: center;
-            background-color: #2196F3;
-            height: 100%;
-        }
+      .edit-container {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        background-color: #2196f3;
+        height: 100%;
+      }
 
-        .edit-item {
-            font-size: 30px;
-            height: 200px;
-            padding: 0px 5px 0px 5px;
-            text-align: center;
-        }
+      .edit-item {
+        font-size: 30px;
+        height: 200px;
+        padding: 0px 5px 0px 5px;
+        text-align: center;
+      }
 
-        textarea {
-            height: 100px;
-            box-sizing: border-box;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-            background-color: #f8f8f8;
-            font-size: 16px;
-            margin: 5px;
-            resize: none;
-        }
+      textarea {
+        height: 100px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        margin: 5px;
+        resize: none;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <form class="grid-container">
-        <div class="flex-container">
-            <div class="flex-item"><input value="HTML" type="button" onclick="displayHtml()"></div>
-            <div class="flex-item"><input value="CSS" type="button" onclick="displayCss()"></div>
-            <div class="flex-item"><input disabled value="JavaScript" type="button"></div>
-            <div class="flex-item"><input disabled value="N/A" type="button"></div>
-            <div class="flex-item"><input disabled value="N/A" type="button"></div>
-            <div class="flex-item"><input disabled value="N/A" type="button"></div>
-        </div>
-        <div class="edit-container">
-            <textarea disabled placeholder="Type here"></textarea>
-            <textarea disabled placeholder="Type here"></textarea>
-            <textarea disabled placeholder="Type here"></textarea>
-            <textarea disabled placeholder="Type here"></textarea>
-            <textarea disabled placeholder="Type here"></textarea>
-            <textarea disabled placeholder="Type here"></textarea>
-        </div>
+      <div class="flex-container">
+        <div class="flex-item"><input value="HTML" type="button" onclick="displayHtml()" /></div>
+        <div class="flex-item"><input value="CSS" type="button" onclick="displayCss()" /></div>
+        <div class="flex-item"><input disabled value="JavaScript" type="button" /></div>
+        <div class="flex-item"><input disabled value="N/A" type="button" /></div>
+        <div class="flex-item"><input disabled value="N/A" type="button" /></div>
+        <div class="flex-item"><input disabled value="N/A" type="button" /></div>
+      </div>
+      <div class="edit-container">
+        <textarea disabled placeholder="Type here"></textarea>
+        <textarea disabled placeholder="Type here"></textarea>
+        <textarea disabled placeholder="Type here"></textarea>
+        <textarea disabled placeholder="Type here"></textarea>
+        <textarea disabled placeholder="Type here"></textarea>
+        <textarea disabled placeholder="Type here"></textarea>
+      </div>
     </form>
 
     <script>
-        function displayHtml() {
-            location.href = "..\\template.html"
-        }
-        function displayCss() {
-            location.href = "..\\style.css"
-        }
+      function displayHtml() {
+        location.href = "..\\template.html";
+      }
+      function displayCss() {
+        location.href = "..\\style.css";
+      }
     </script>
-</body>
-
+  </body>
 </html>
