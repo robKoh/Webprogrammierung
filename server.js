@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieParser = require("cookie-parser");
 const { v4: uuidv4 } = require("uuid");
+//const datastorage = require("./datastorage");
 const app = express();
 const PORT = 8080;
 
@@ -11,11 +12,27 @@ app.use(cookieParser());
 app.use(express.static("src"));
 app.use(express.json()); //Used to parse JSON bodies, newer than bodyParser Library
 
+const ENUM = { comment: 0, javas: 1}
+
 const users = [];
 const commentSection = [[],[]]
 var tempUser;
 
-app.post('/login', (req, res) => {
+function fooRoute(req, res, next) {
+  const newUrl = req.url;
+
+  if (newUrl === '/login') {
+    if (tempUser.visitCounter !== undefined) {
+      tempUser.visitCounter[ENUM.comment]++;
+    } 
+    res.send()
+  } else {
+    //console.log(tempUser);
+    next();
+  }
+}
+
+app.post('/login', (req, res, next) => {
   const user = req.body;
 
   //Anmelden und Registrieren
@@ -25,24 +42,36 @@ app.post('/login', (req, res) => {
       res.cookie("session", tempUser.id, {maxAge: 300000});
       res.redirect("/comment.html");
       res.statusCode = 200;
-      res.send();
     } else {
       //Registrieren
       user.id = uuidv4();
       user.checkbox = [false, false] 
+      user.visitCounter = [[],[]]
       tempUser = user;
       users.push(user);
       res.cookie("session", user.id, {maxAge: 300000});
       res.redirect("/comment.html");
       res.statusCode = 201;
-      res.send();
     }
   } else {
     res.redirect("/index.html");
-    res.send();
   }
+  next();
+  //res.send();
   //console.log(users); //Testzwecken drin, um Array Users Content zu überprüfen
   //console.log(users.length);
+});
+
+app.post("/*", fooRoute);
+//app.post("/", fooRoute);
+
+app.use((req, res, next) => {
+  if (req.cookies.session !== undefined) {
+    next();
+  } else {
+    res.redirect("/");
+    res.send();
+  }
 });
 
 app.post('/checkbox', (req, res) => {
@@ -53,26 +82,29 @@ app.post('/checkbox', (req, res) => {
   } else {
     tempUser.checkbox[parseInt(checkbox.checkbox[0].charAt(0))] = false
   }
+  res.statusCode = 201;
+  res.redirect("/comment.html");
+  res.send();
 });
 
+app.post('/pageload', (req, res) => {
+  //console.log(req);
+  //console.log("Page loaded");
+  res.send();
+});
 
 app.post('/comment', (req, res) => {
   const form_field = req.body;
+
   if (form_field.hasOwnProperty("commentfield0")) {
     commentSection[0].push(form_field.commentfield0)
   }
   else {
     commentSection[1].push(form_field.commentfield1)
   }
-});
-
-app.use((req, res, next) => {
-  if (req.cookies.session !== undefined) {
-    next();
-  } else {
-    res.redirect("/index.html");
-    res.send();
-  }
+  res.statusCode = 201;
+  res.redirect("/comment.html");
+  res.send();
 });
 
 function findUserinUsers(user) {

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template</title>
+    <!-- <link rel="stylesheet" href="Style.css"> -->
+</head>
+
+<body>
+    <header> 
+        <h2>Login HTML Seite</h2>
+    </header>
+    <form action="/login" method="POST">
+        <label for="username">Benutzername:</label>
+        <input id="username" name="username" /><br>
+        <label for="password" >Passwort:</label>
+        <input id="password" name="password" type="password" style="margin-left: 9.1mm;" />
+        <button id="buttonLogin" onclick="validateInputForm()">login</button>
+    </form>
+</body>
+
+<script src="wrongCredentials.js"></script>
+
+</html>
