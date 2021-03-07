@@ -29,4 +29,4 @@ RUN npm install && npm ci
 COPY . .
 
 EXPOSE 8080
-CMD [ "node", "test.js" ] 
+CMD [ "node", "server.js" ]
