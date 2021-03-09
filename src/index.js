@@ -39,15 +39,49 @@ router.post("/login", (req, res, next) => {
   //console.log(users.length);
 });
 
-/*router.post("/css", (req, res) => {
-  if (data.tempUser === undefined) {
-    data.tempUser = 0;
-  } else {
-    data.tempUser++;
-  }
-  res.redirect("/");
+router.post("/show-comment", (req, res) => {
+  res.redirect("/comment.html");
   res.send();
-});*/
+});
+
+router.get("/comment", (req, res) => {
+  if (data.tempUser.username !== undefined) {
+    res.statusCode = 200;
+    var usr = data.tempUser;
+    var cmt = data.commentSection;
+    res.json({ usr, cmt });
+  } else {
+    res.statusCode = 401;
+    res.send();
+  }
+});
+
+router.post("/comment", (req, res) => {
+  const form_field = req.body;
+  console.log(data);
+
+  if (form_field.hasOwnProperty("commentfield0")) {
+    data.commentSection[0].push(form_field.commentfield0);
+  } else {
+    data.commentSection[1].push(form_field.commentfield1);
+  }
+  res.statusCode = 201;
+  res.redirect("/comment.html");
+  res.send();
+});
+
+router.post("/checkbox", (req, res) => {
+  const checkbox = req.body;
+
+  if (checkbox.checkbox[1] !== undefined) {
+    data.tempUser.checkbox[parseInt(checkbox.checkbox[0].charAt(0))] = true;
+  } else {
+    data.tempUser.checkbox[parseInt(checkbox.checkbox[0].charAt(0))] = false;
+  }
+  res.statusCode = 201;
+  res.redirect("/comment.html");
+  res.send();
+});
 
 function findUserInUsers(user) {
   const userFounded = data.users.find((listenElement) => {

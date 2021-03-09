@@ -11,7 +11,7 @@
   <body>
     <header>
       <h2>Kommentar - Bereich</h2>
-      <h4 style="font-size: larger">Hallo, <span id="display_user" style="font-size: larger; color: darkgoldenrod"></span></h4>
+      <h4 style="font-size: larger">Hallo<!-- <span id="display_user" style="font-size: larger; color: darkgoldenrod"></span> --> </h4>
     </header>
 
     <input type="button" value="logout" onclick="window.location.href = '/logout'" />
@@ -37,6 +37,7 @@
     <div>
       <ul id="comment0"></ul>
     </div>
+
     <div>
       <p>Javascript</p>
       <form action="/checkbox" method="POST">
@@ -53,6 +54,7 @@
     <div>
       <ul id="comment1"></ul>
     </div>
-    <script src="displayUser.js"></script>
+    
+    <script src="comment.js"></script>
   </body>
 </html>
