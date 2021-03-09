@@ -32,11 +32,26 @@ router.post("/login", (req, res, next) => {
       res.statusCode = 201;
     }
   }
-  res.redirect("/");
+  res.redirect("/template.html");
   next();
   //res.send();
   //console.log(users); //Testzwecken drin, um Array Users Content zu überprüfen
   //console.log(users.length);
+});
+
+router.post("/html", (req, res) => {
+  res.redirect("/template.html");
+  res.send();
+});
+
+router.post("/css", (req, res) => {
+  res.redirect("/css.html");
+  res.send();
+});
+
+router.post("/javascript", (req, res) => {
+  res.redirect("/javascript.html");
+  res.send();
 });
 
 router.post("/show-comment", (req, res) => {
@@ -95,5 +110,11 @@ function findUserInUsers(user) {
   }
   return false;
 }
+
+router.post("/logout", (req, res) => {
+  res.clearCookie("session");
+  res.redirect("/");
+  res.send();
+});
 
 module.exports = router;

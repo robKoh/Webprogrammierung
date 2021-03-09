@@ -4,52 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Template</title>
-    <!-- <link rel="stylesheet" href="Style.css"> -->
-    <style>
-      body {
-        height: 100%;
-        margin: 0px;
-      }
-
-      .grid-container {
-        display: grid;
-        grid-template-columns: auto;
-        /* background-color: #2196f3; */
-      }
-
-      .flex-container {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: left;
-        /* background-color: #2196f3; */
-        padding-bottom: 10px;
-        border-bottom: 1px solid black;
-      }
-
-      .flex-item {
-        font-size: 30px;
-        padding: 0px 5px 0px 5px;
-        text-align: center;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
-    <header class="grid-container">
-      <div class="flex-container">
-        <form action="/html" method="POST" class="flex-item"><button>HTML</button></form>
-        <form action="/css" method="POST" class="flex-item"><button>CSS</button></form>
-        <form action="/javascript" method="POST" class="flex-item"><button>Javascript</button></form>
-        <form action="/show-comment" method="POST" class="flex-item"><button>Kommentar</button></form>
+    <div class="topnav">
+      <div class="menu-links">
+        <form action="/html" method="POST"><button>HTML</button></form>
+        <form action="/css" method="POST"><button>CSS</button></form>
+        <form action="/javascript" method="POST"><button>Javascript</button></form>
+        <form action="/show-comment" method="POST"><button>Kommentar</button></form>
         <form class="flex-item"><button disabled>N/A</button></form>
       </div>
-    </header>
-
-    <form action="/login" method="POST">
-      <input id="username" name="username" placeholder="Benutzer" />
-      <input id="password" name="password" type="password" placeholder="Passwort" />
-      <button id="button-login">Login</button>
-    </form>
+      <div class="login-container">
+        <form action="/login" method="POST">
+          <input id="username" name="username" placeholder="Benutzer" />
+          <input id="password" name="password" type="password" placeholder="Passwort" />
+          <button id="button-login">Login</button>
+        </form>
+      </div>
+    </div>
 
   </body>
 </html>

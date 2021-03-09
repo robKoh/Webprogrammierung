@@ -5,16 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Template</title>
-    <!-- <link rel="stylesheet" href="Style.css"> -->
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
+    <div class="topnav">
+      <div class="menu-links">
+        <form action="/html" method="POST"><button>HTML</button></form>
+        <form action="/css" method="POST"><button>CSS</button></form>
+        <form action="/javascript" method="POST"><button>Javascript</button></form>
+        <form action="/show-comment" method="POST"><button>Kommentar</button></form>
+        <form class="flex-item"><button disabled>N/A</button></form>
+      </div>
+      <div class="login-container">
+        <form action="/logout" method="POST">
+          <button id="button-login">Logout</button>
+        </form>
+      </div>
+    </div>
     <header>
       <h2>Kommentar - Bereich</h2>
-      <h4 style="font-size: larger">Hallo<!-- <span id="display_user" style="font-size: larger; color: darkgoldenrod"></span> --> </h4>
     </header>
-
-    <input type="button" value="logout" onclick="window.location.href = '/logout'" />
 
     <p>
       Hier siehst du Kommentare anderer User zu bestimmten HTML Begriffen. <br />
