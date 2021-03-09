@@ -64,17 +64,13 @@
   <body>
     <header>
       <h2>Testüberschrift</h2>
-      <button id="buttonShow" onclick="document.getElementById('show-dialog').show()">Login</button>
-      <dialog id="show-dialog">
         <form action="/login" method="POST">
           <label for="username">Benutzername:</label>
           <input id="username" name="username" /><br />
           <label for="password">Passwort:</label>
           <input id="password" name="password" type="password" style="margin-left: 9.1mm" />
-          <button id="buttonLogin" onclick="validateInputForm()">login</button>
+          <button id="buttonLogin" onclick="validateInputForm()">Login</button>
         </form>
-        <button id="buttonClose" onclick="document.getElementById('show-dialog').close()">close</button>
-      </dialog>
     </header>
     <div class="grid-container">
       <div class="flex-container">
@@ -93,5 +89,11 @@
         <textarea disabled placeholder="Type here"></textarea>
       </div>
     </div>
+
+    <script>
+      /*document.getElementById("buttonShow").addEventListener("click", () => {
+        document.getElementById("show-dialog").show();
+      });*/
+    </script>
   </body>
 </html>
