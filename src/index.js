@@ -34,9 +34,6 @@ router.post("/login", (req, res, next) => {
   }
   res.redirect("/template.html");
   next();
-  //res.send();
-  //console.log(users); //Testzwecken drin, um Array Users Content zu überprüfen
-  //console.log(users.length);
 });
 
 router.post("/html", (req, res) => {
@@ -60,9 +57,9 @@ router.post("/show-comment", (req, res) => {
 });
 
 router.get("/comment", (req, res) => {
-  if (data.tempUser.username !== undefined) {
+  if (data.tempUser === undefined || data.tempUser.username !== undefined) {
     res.statusCode = 200;
-    var usr = data.tempUser;
+    var usr = data.tempUser === undefined ? undefined : data.tempUser;
     var cmt = data.commentSection;
     res.json({ usr, cmt });
   } else {
@@ -72,28 +69,34 @@ router.get("/comment", (req, res) => {
 });
 
 router.post("/comment", (req, res) => {
-  const form_field = req.body;
-  console.log(data);
-
-  if (form_field.hasOwnProperty("commentfield0")) {
-    data.commentSection[0].push(form_field.commentfield0);
+  if (data.tempUser === undefined) {
+    res.statusCode = 200;
   } else {
-    data.commentSection[1].push(form_field.commentfield1);
+    const form_field = req.body;
+
+    if (form_field.hasOwnProperty("commentfield0")) {
+      data.commentSection[0].push(form_field.commentfield0);
+    } else {
+      data.commentSection[1].push(form_field.commentfield1);
+    }
+    res.statusCode = 201;
   }
-  res.statusCode = 201;
   res.redirect("/comment.html");
   res.send();
 });
 
 router.post("/checkbox", (req, res) => {
-  const checkbox = req.body;
-
-  if (checkbox.checkbox[1] !== undefined) {
-    data.tempUser.checkbox[parseInt(checkbox.checkbox[0].charAt(0))] = true;
+  if (data.tempUser === undefined) {
+    res.statusCode = 200;
   } else {
-    data.tempUser.checkbox[parseInt(checkbox.checkbox[0].charAt(0))] = false;
+    const checkbox = req.body;
+    if (checkbox.checkbox[1] !== undefined) {
+      data.tempUser.checkbox[parseInt(checkbox.checkbox[0].charAt(0))] = true;
+    } else {
+      data.tempUser.checkbox[parseInt(checkbox.checkbox[0].charAt(0))] = false;
+    }
+    res.statusCode = 201;
   }
-  res.statusCode = 201;
   res.redirect("/comment.html");
   res.send();
 });
@@ -102,7 +105,6 @@ function findUserInUsers(user) {
   const userFounded = data.users.find((listenElement) => {
     return listenElement.username === user.username && listenElement.password === user.password;
   });
-  //console.log(userFounded); // Test
 
   if (userFounded !== undefined) {
     data.tempUser = userFounded;
@@ -113,6 +115,7 @@ function findUserInUsers(user) {
 
 router.post("/logout", (req, res) => {
   res.clearCookie("session");
+  data.tempUser = undefined;
   res.redirect("/");
   res.send();
 });

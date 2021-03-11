@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Template</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
@@ -59,13 +59,13 @@
     <div>
       <form action="/comment" method="POST">
         Kommentar: <input type="text" name="commentfield1" id="Text1" onfocus="this.value=''" />
-        <input type="submit" value="hinzufügen" onclick="addToCommentSection('comment1', document.getElementById('Text1').value)" />
+        <input type="submit" value="hinzufügen" />
       </form>
     </div>
     <div>
       <ul id="comment1"></ul>
     </div>
-    
+
     <script src="comment.js"></script>
   </body>
 </html>
