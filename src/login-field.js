@@ -1,12 +1,14 @@
 fetch("/login")
   .then((response) => response.json())
   .then((json) => {
-    console.log("outside");
     if (json.usr !== undefined) {
-      console.log("inside");
-      //document.getElementById("menu-login-field").style.visibility = "collapse";
-      //document.getElementById("menu-logout-field").style.visibility = "visible";
       document.getElementById("menu-login-field").hidden = true;
       document.getElementById("menu-logout-field").hidden = false;
     }
+  });
+
+fetch("/show-most-visited-page")
+  .then((response) => response.json())
+  .then((json) => {
+    document.getElementById("show-most-visited-page").hidden = json.hideMostVisitedPageBut;
   });

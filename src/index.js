@@ -5,6 +5,8 @@ const data = require("../datastorage");
 const cookieParser = require("cookie-parser");
 const { v4: uuidv4 } = require("uuid");
 
+var lastVisitedPage = undefined;
+
 // App
 //app.use("/index.html", express.static("src"));
 router.use(express.urlencoded()); //Parse URL-encoded bodies
@@ -13,20 +15,14 @@ router.use(express.static("src"));
 router.use(express.json()); //Used to parse JSON bodies, newer than bodyParser Library
 
 router.get("/login", (req, res) => {
-  if (data.tempUser === undefined || data.tempUser.username !== undefined) {
-    res.statusCode = 200;
-    var usr = data.tempUser === undefined ? undefined : data.tempUser;
-    res.json({ usr });
-  } else {
-    res.statusCode = 401;
-    res.send();
-  }
+  res.statusCode = 200;
+  var usr = data.tempUser;
+  res.json({ usr });
 });
 
 router.post("/login", (req, res, next) => {
   const user = req.body;
-  console.log(user);
-
+  
   //Anmelden und Registrieren
   if (user.username !== "" && user.password !== "") {
     if (findUserInUsers(user)) {
@@ -38,35 +34,73 @@ router.post("/login", (req, res, next) => {
       user.id = uuidv4();
       user.checkbox = [false, false];
       user.visitCounter = [[], []];
+      user.visitedPage = new Map();
       data.tempUser = user;
       data.users.push(user);
       res.cookie("session", user.id, { maxAge: 300000 });
       res.statusCode = 201;
     }
   }
-  res.redirect("/template.html");
+  res.redirect("/");
   next();
 });
 
 router.post("/html", (req, res) => {
+  incrementVisitedPage("template.html");
   res.redirect("/template.html");
   res.send();
 });
 
 router.post("/css", (req, res) => {
+  incrementVisitedPage("css.html");
   res.redirect("/css.html");
   res.send();
 });
 
 router.post("/javascript", (req, res) => {
+  incrementVisitedPage("javascript.html");
   res.redirect("/javascript.html");
   res.send();
 });
 
 router.post("/show-comment", (req, res) => {
+  incrementVisitedPage("comment.html");
   res.redirect("/comment.html");
   res.send();
 });
+
+router.get("/show-most-visited-page", (req, res) => {
+  var hideMostVisitedPageBut = data.tempUser === undefined || data.tempUser.visitedPage.size === 0;
+  res.json({ hideMostVisitedPageBut });
+});
+
+router.post("/show-most-visited-page", (req, res) => {
+  var max = undefined;
+  var mostVisited = undefined;
+  data.tempUser.visitedPage.forEach((value, key) => {
+    if (max === undefined || value > max) {
+      max = value;
+      mostVisited = key;
+    }
+  });
+  lastVisitedPage = mostVisited;
+  res.redirect("/" + mostVisited);
+  res.send();
+});
+
+function incrementVisitedPage(page) {
+  if (data.tempUser !== undefined) {
+    if (page !== lastVisitedPage) {
+      lastVisitedPage = page;
+      var tmp = data.tempUser.visitedPage.get(page);
+      if (tmp === undefined) {
+        data.tempUser.visitedPage.set(page, 1);
+      } else {
+        data.tempUser.visitedPage.set(page, tmp + 1);
+      }
+    }
+  }
+}
 
 router.get("/comment", (req, res) => {
   if (data.tempUser === undefined || data.tempUser.username !== undefined) {
@@ -128,6 +162,7 @@ function findUserInUsers(user) {
 router.post("/logout", (req, res) => {
   res.clearCookie("session");
   data.tempUser = undefined;
+  lastVisitedPage = undefined;
   res.redirect("/");
   res.send();
 });
