@@ -17,116 +17,113 @@
       </div>
       <div class="login-container">
         <form id="menu-login-field" action="/login" method="POST">
-          <input id="username" name="username" placeholder="Benutzer" />
-          <input id="password" name="password" type="password" placeholder="Passwort" />
-          <button id="button-login">Login</button>
+          <input name="username" placeholder="Benutzer" />
+          <input name="password" type="password" placeholder="Passwort" />
+          <button>Login</button>
         </form>
         <form id="menu-logout-field" action="/logout" method="POST" hidden>
-          <button id="button-login">Logout</button>
+          <button>Logout</button>
         </form>
       </div>
     </div>
 
-    <div style="font-size: 16px; overflow-x:auto;">
-        <pre>
-           body {
-              font-family: Arial, Helvetica, sans-serif;
-              font-size: 12px;
-              height: 100%;
-              margin: 0px;
-            }
+    <div style="font-size: 16px; overflow-x: auto">
+      <pre>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  height: 100%;
+  margin: 0px;
+}
 
-            table,
-            th,
-            td {
-              border: 1px solid rgb(0, 0, 0);
-              border-collapse: collapse;
-            }
+table,
+th,
+td {
+  border: 1px solid rgb(0, 0, 0);
+  border-collapse: collapse;
+}
 
-            * {box-sizing: border-box;}
+* {
+  box-sizing: border-box;
+}
 
-            /* Style the navbar */
-            .topnav {
-              overflow: hidden;
-              background-color: #2b2d2f;
-            }
+.topnav {
+  overflow: hidden;
+  background-color: #2b2d2f;
+}
 
-            /* Navbar links */
-            .topnav .menu-links {
-              float: left;
-              display: flex;
-              flex-flow: row wrap;
-              color: black;
-              text-align: center;
-              padding-bottom: 10px;
-              padding-left: 10px;
-              text-decoration: none;
-              font-size: 17px;
-            }
+.topnav .menu-links {
+  float: left;
+  display: flex;
+  flex-flow: row wrap;
+  color: black;
+  text-align: center;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  text-decoration: none;
+  font-size: 17px;
+}
 
-            .topnav .menu-links button {
-              float: right;
-              padding: 6px;
-              margin-top: 8px;
-              margin-right: 16px;
-              background: #2b2d2f;
-              color: #dddddd;
-              font-size: 17px;
-              border: none;
-              cursor: pointer;
-            }
+.topnav .menu-links button {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #2b2d2f;
+  color: #dddddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
 
-            .topnav .menu-links button:hover {
-              background: #dddddd;
-              color: #2b2d2f;
-            }
+.topnav .menu-links button:hover {
+  background: #dddddd;
+  color: #2b2d2f;
+}
 
-            /* Style the input container */
-            .topnav .login-container {
-              float: right;
-              padding-bottom: 5px;
-            }
+.topnav .login-container {
+  float: right;
+  padding-bottom: 5px;
+}
 
-            /* Style the input field inside the navbar */
-            .topnav input {
-              padding: 6px;
-              margin-top: 8px;
-              font-size: 17px;
-              border: none;
-              width: 150px; /* adjust as needed (as long as it doesn't break the topnav) */
-            }
+.topnav input {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  width: 150px;
+}
 
-            /* Style the button inside the input container */
-            .topnav .login-container button {
-              float: right;
-              padding: 6px;
-              margin-top: 8px;
-              margin-right: 16px;
-              background: #ddd;
-              font-size: 17px;
-              border: none;
-              cursor: pointer;
-            }
+.topnav .login-container button {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
 
-            .topnav .login-container button:hover {
-              background: #ccc;
-            }
+.topnav .login-container button:hover {
+  background: #ccc;
+}
 
-            @media only screen and (max-width: 600px) {
-              .topnav .login-container {
-                float: left;
-                padding-bottom: 10px;
-              }
+@media only screen and (max-width: 600px) {
+  .topnav .login-container {
+    float: left;
+    padding-bottom: 10px;
+  }
 
-              .topnav .login-container button {
-                float: left;
-              }
+  .topnav .login-container button {
+    float: left;
+  }
 
-              .topnav .login-container {
-                padding-left: 5px;
-              }
-            }
-        </pre>
+  .topnav .login-container {
+    padding-left: 5px;
+  }
+}</pre
+      >
     </div>
     <script src="./login-field.js"></script>
   </body>

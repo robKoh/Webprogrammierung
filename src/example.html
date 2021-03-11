@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Template</title>
+    <title>Example</title>
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -18,12 +18,12 @@
       </div>
       <div class="login-container">
         <form id="menu-login-field" action="/login" method="POST">
-          <input id="username" name="username" placeholder="Benutzer" />
-          <input id="password" name="password" type="password" placeholder="Passwort" />
-          <button id="button-login">Login</button>
+          <input name="username" placeholder="Benutzer" />
+          <input name="password" type="password" placeholder="Passwort" />
+          <button>Login</button>
         </form>
         <form id="menu-logout-field" action="/logout" method="POST" hidden>
-          <button id="button-login">Logout</button>
+          <button>Logout</button>
         </form>
       </div>
     </div>
@@ -77,6 +77,7 @@
     <ol>
       <li>Erstes Element</li>
     </ol>
+
     <script src="./login-field.js"></script>
   </body>
 </html>

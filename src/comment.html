@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Template</title>
+    <title>Comment</title>
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -19,12 +18,12 @@
       </div>
       <div class="login-container">
         <form id="menu-login-field" action="/login" method="POST">
-          <input id="username" name="username" placeholder="Benutzer" />
-          <input id="password" name="password" type="password" placeholder="Passwort" />
-          <button id="button-login">Login</button>
+          <input name="username" placeholder="Benutzer" />
+          <input name="password" type="password" placeholder="Passwort" />
+          <button>Login</button>
         </form>
         <form id="menu-logout-field" action="/logout" method="POST" hidden>
-          <button id="button-login">Logout</button>
+          <button>Logout</button>
         </form>
       </div>
     </div>
@@ -46,8 +45,8 @@
     </div>
     <div>
       <form action="/comment" method="POST">
-        Kommentar: <input type="text" name="commentfield0" id="Text0" onfocus="this.value=''" />
-        <input type="submit" value="hinzufügen" onclick="addToCommentSection('comment0', document.getElementById('Text0').value)" />
+        Kommentare: <input type="text" name="commentfield0" placeholder="Neuer Kommentar" onfocus="this.value=''" />
+        <input type="submit" value="hinzufügen" />
       </form>
     </div>
     <div>
@@ -63,7 +62,7 @@
     </div>
     <div>
       <form action="/comment" method="POST">
-        Kommentar: <input type="text" name="commentfield1" id="Text1" onfocus="this.value=''" />
+        Kommentare: <input type="text" name="commentfield1" placeholder="Neuer Kommentar" onfocus="this.value=''" />
         <input type="submit" value="hinzufügen" />
       </form>
     </div>

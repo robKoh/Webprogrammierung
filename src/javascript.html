@@ -17,32 +17,32 @@
       </div>
       <div class="login-container">
         <form id="menu-login-field" action="/login" method="POST">
-          <input id="username" name="username" placeholder="Benutzer" />
-          <input id="password" name="password" type="password" placeholder="Passwort" />
-          <button id="button-login">Login</button>
+          <input name="username" placeholder="Benutzer" />
+          <input name="password" type="password" placeholder="Passwort" />
+          <button>Login</button>
         </form>
         <form id="menu-logout-field" action="/logout" method="POST" hidden>
-          <button id="button-login">Logout</button>
+          <button>Logout</button>
         </form>
       </div>
     </div>
-    <div style="font-size: 16px; overflow-x:auto;">
+    <div style="font-size: 16px; overflow-x: auto">
       <pre>
-      fetch("/login")
-      .then((response) => response.json())
-      .then((json) => {
-        if (json.usr !== undefined) {
-          document.getElementById("menu-login-field").hidden = true;
-          document.getElementById("menu-logout-field").hidden = false;
-        }
-      });
+fetch("/login")
+  .then((response) => response.json())
+  .then((json) => {
+    if (json.usr !== undefined) {
+      document.getElementById("menu-login-field").hidden = true;
+      document.getElementById("menu-logout-field").hidden = false;
+    }
+  });
 
-      fetch("/show-most-visited-page")
-        .then((response) => response.json())
-        .then((json) => {
-          document.getElementById("show-most-visited-page").hidden = json.hideMostVisitedPageBut;
-        });
-      </pre>
+fetch("/show-most-visited-page")
+  .then((response) => response.json())
+  .then((json) => {
+    document.getElementById("show-most-visited-page").hidden = json.hideMostVisitedPageBut;
+  });</pre
+      >
     </div>
 
     <script src="./login-field.js"></script>
