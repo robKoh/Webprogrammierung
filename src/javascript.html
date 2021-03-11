@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JavaScript</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -25,6 +26,25 @@
         </form>
       </div>
     </div>
+    <div style="font-size: 16px; overflow-x:auto;">
+      <pre>
+      fetch("/login")
+      .then((response) => response.json())
+      .then((json) => {
+        if (json.usr !== undefined) {
+          document.getElementById("menu-login-field").hidden = true;
+          document.getElementById("menu-logout-field").hidden = false;
+        }
+      });
+
+      fetch("/show-most-visited-page")
+        .then((response) => response.json())
+        .then((json) => {
+          document.getElementById("show-most-visited-page").hidden = json.hideMostVisitedPageBut;
+        });
+      </pre>
+    </div>
+
     <script src="./login-field.js"></script>
   </body>
 </html>

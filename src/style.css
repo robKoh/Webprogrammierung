@@ -12,40 +12,13 @@ td {
   border-collapse: collapse;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: auto;
-  /* background-color: #2196f3; */
-}
-
-.flex-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: left;
-  /* background-color: #2196f3; */
-  padding-bottom: 10px;
-  border-bottom: 1px solid black;
-}
-
-.flex-item {
-  font-size: 30px;
-  padding: 0px 5px 0px 5px;
-  text-align: center;
-}
-
-.flex-item .logout {
-  align-self: end;
-}
-
 * {box-sizing: border-box;}
 
-/* Style the navbar */
 .topnav {
   overflow: hidden;
   background-color: #2b2d2f;
 }
 
-/* Navbar links */
 .topnav .menu-links {
   float: left;
   display: flex;
@@ -75,22 +48,19 @@ td {
   color: #2b2d2f;
 }
 
-/* Style the input container */
 .topnav .login-container {
   float: right;
   padding-bottom: 5px;
 }
 
-/* Style the input field inside the navbar */
 .topnav input {
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
   border: none;
-  width: 150px; /* adjust as needed (as long as it doesn't break the topnav) */
+  width: 150px;
 }
 
-/* Style the button inside the input container */
 .topnav .login-container button {
   float: right;
   padding: 6px;
