@@ -12,8 +12,20 @@ router.use(cookieParser());
 router.use(express.static("src"));
 router.use(express.json()); //Used to parse JSON bodies, newer than bodyParser Library
 
+router.get("/login", (req, res) => {
+  if (data.tempUser === undefined || data.tempUser.username !== undefined) {
+    res.statusCode = 200;
+    var usr = data.tempUser === undefined ? undefined : data.tempUser;
+    res.json({ usr });
+  } else {
+    res.statusCode = 401;
+    res.send();
+  }
+});
+
 router.post("/login", (req, res, next) => {
   const user = req.body;
+  console.log(user);
 
   //Anmelden und Registrieren
   if (user.username !== "" && user.password !== "") {
