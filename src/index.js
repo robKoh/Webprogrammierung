@@ -22,7 +22,7 @@ router.get("/login", (req, res) => {
 
 router.post("/login", (req, res, next) => {
   const user = req.body;
-  
+
   //Anmelden und Registrieren
   if (user.username !== "" && user.password !== "") {
     if (findUserInUsers(user)) {
@@ -33,7 +33,7 @@ router.post("/login", (req, res, next) => {
       //Registrieren
       user.id = uuidv4();
       user.checkbox = [false, false];
-      user.visitCounter = [[], []];
+      user.ownComments = [[], []];
       user.visitedPage = new Map();
       data.tempUser = user;
       data.users.push(user);
@@ -103,15 +103,10 @@ function incrementVisitedPage(page) {
 }
 
 router.get("/comment", (req, res) => {
-  if (data.tempUser === undefined || data.tempUser.username !== undefined) {
-    res.statusCode = 200;
-    var usr = data.tempUser === undefined ? undefined : data.tempUser;
-    var cmt = data.commentSection;
-    res.json({ usr, cmt });
-  } else {
-    res.statusCode = 401;
-    res.send();
-  }
+  res.statusCode = 200;
+  var usr = data.tempUser;
+  var cmt = data.commentSection;
+  res.json({ usr, cmt });
 });
 
 router.post("/comment", (req, res) => {
@@ -121,8 +116,10 @@ router.post("/comment", (req, res) => {
     const form_field = req.body;
 
     if (form_field.hasOwnProperty("commentfield0")) {
+      data.tempUser.ownComments[0].push(data.commentSection[0].length);
       data.commentSection[0].push(form_field.commentfield0);
     } else {
+      data.tempUser.ownComments[1].push(data.commentSection[1].length);
       data.commentSection[1].push(form_field.commentfield1);
     }
     res.statusCode = 201;
